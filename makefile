@@ -1,23 +1,19 @@
-
 all: output run
 
-output: main.o card.o deck.o node.o
-	g++ main.o card.o deck.o node.o -o output
+output: card.o deck.o main.o
+	g++ main.o linkedlist.o card.o deck.o -o output
 
 run:
-	output
+	./output
 
-main.o: main.cpp deck.hpp linklist.hpp
+main.o: main.cpp deck.hpp
 	g++ -c main.cpp
 
-card.o: card.cpp card.hpp 
-	g++ -c card.cpp
-
-deck.o: deck.cpp deck.hpp linklist.hpp
+deck.o: card.hpp linkedlist.hpp
 	g++ -c deck.cpp
 
-node.o: node.cpp
-	g++ -c node.cpp
+card.o: card.cpp
+	g++ -c card.cpp
 
 clean:
 	rm *.o

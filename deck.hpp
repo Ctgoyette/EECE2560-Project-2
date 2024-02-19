@@ -1,4 +1,3 @@
-
 #ifndef DECK_HPP
 #define DECK_HPP
 
@@ -6,11 +5,9 @@
 #include <iostream>
 #include <time.h>
 #include "card.hpp"
-#include "linklist.hpp"
-
+#include "linkedlist.hpp"
 
 using namespace std;
-
 
 class Deck
 {
@@ -56,7 +53,7 @@ class Deck
 
     private:
         // The linked list containing all cards
-        LinkList<Card> cards;
+        LinkedList<Card> cards;
         // The current number of cards in the deck
         // NOTE MAKE SURE TO UPDATE THIS VALUE WHEN LENGTH OF CARDS IS CHANGED
         int numCards;

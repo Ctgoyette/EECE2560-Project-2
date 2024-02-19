@@ -1,7 +1,5 @@
 #include "card.hpp"
 
-
-
 Card::Card()
 {
         valueMap[2] = "2";

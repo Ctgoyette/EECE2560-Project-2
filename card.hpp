@@ -1,9 +1,10 @@
+#ifndef CARD_HPP
+#define CARD_HPP
+
 #include <string>
 #include <iostream>
 #include <map>
 
-#ifndef CARD_HPP
-#define CARD_HPP
 using namespace std;
 
 class Card

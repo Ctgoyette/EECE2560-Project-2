@@ -1,5 +1,6 @@
-#include "deck.hpp"
 #include <iostream>
+#include "deck.hpp"
+
 using namespace std;
 
 int main()

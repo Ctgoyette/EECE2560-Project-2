@@ -1,6 +1,5 @@
 #include "deck.hpp"
 
-
 Deck::Deck()
 {   
     numCards = 0;
