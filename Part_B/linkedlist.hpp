@@ -45,8 +45,8 @@ class LinkedList
         template <typename Y>
         friend ostream& operator<< (ostream& out, const LinkedList<Y>&);
 
-        Node<T>* getHead() {return head;}
-
+        Node<T> *getHead() {return head;}
+        void setHead(Node<T> *newHead) {head = newHead;}
     
     private:
 

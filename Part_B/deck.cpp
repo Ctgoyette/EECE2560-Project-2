@@ -19,16 +19,23 @@ Deck::Deck()
             numCards ++;
         }
     }
+    head = cards.getHead();
 }
 
 
 Deck::~Deck()
 {
-    // Node<Card> *delCard = cards.getHead();
-    // cout << "Test\n" << delCard->data << endl;
-    cout << "Test";
+    Node<Card> *delCard = cards.getHead();
+    while (delCard != NULL)
+    {
+        head = head->next;
+        cards.setHead(head);
+        delete delCard;
+        delCard = head;
+        numCards--;
+    }
+    head = nullptr;
 }
-
 
 void Deck::shuffle()
 {
@@ -41,6 +48,7 @@ void Deck::shuffle()
         // Moves the card at that index to end of list
         cards.addLast(cards.popNode(randValue));
     }
+    head = cards.getHead();
 }
 
 
@@ -62,12 +70,14 @@ void Deck::removeCard()
     // Erases node at curr pointer
     cards.erase_element();
     numCards--;
+    head = cards.getHead();
 }
 
 
 Card Deck::deal()
 {
     Card card = cards.popNode(1);
+    head = cards.getHead();
     return card;
 }
 
@@ -75,5 +85,6 @@ Card Deck::deal()
 void Deck::replace(Card& value)
 {
     cards.addLast(value);
+    head = cards.getHead();
     numCards++;
 }

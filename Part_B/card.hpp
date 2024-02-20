@@ -11,7 +11,6 @@ class Card
 {
     public:
         Card();
-        Card(const Card& copiedCard);
 
         /**
          * @brief Set the card value ie. 2-Ace
@@ -48,7 +47,6 @@ class Card
          * @return ostream& 
          */
         friend ostream& operator<< (ostream& out, const Card&);
-        Card& operator= (const Card& origCard);
 
     private:
         string cardSuit;

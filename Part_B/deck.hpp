@@ -58,6 +58,7 @@ class Deck
         // The current number of cards in the deck
         // NOTE MAKE SURE TO UPDATE THIS VALUE WHEN LENGTH OF CARDS IS CHANGED
         int numCards;
+        Node<Card> *head;
         
 };
 
