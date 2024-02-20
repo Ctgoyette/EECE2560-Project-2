@@ -81,5 +81,6 @@ ostream& operator<< (ostream& out, const Card& outputCard){
 Card& Card::operator= (const Card& baseCard)
 {
     cardSuit = baseCard.getSuit();
-    cardValue = baseCard.getValue();   
+    cardValue = baseCard.getValue();
+    return *this;
 }
