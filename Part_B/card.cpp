@@ -2,25 +2,51 @@
 
 Card::Card()
 {
-        valueMap[2] = "2";
-        valueMap[3] = "3";
-        valueMap[4] = "4";
-        valueMap[5] = "5";
-        valueMap[6] = "6";
-        valueMap[7] = "7";
-        valueMap[8] = "8";
-        valueMap[9] = "9";
-        valueMap[10] = "10";
-        valueMap[11] = "Jack";
-        valueMap[12] = "Queen";
-        valueMap[13] = "King";
-        valueMap[14] = "Ace";
+    valueMap[2] = "2";
+    valueMap[3] = "3";
+    valueMap[4] = "4";
+    valueMap[5] = "5";
+    valueMap[6] = "6";
+    valueMap[7] = "7";
+    valueMap[8] = "8";
+    valueMap[9] = "9";
+    valueMap[10] = "10";
+    valueMap[11] = "Jack";
+    valueMap[12] = "Queen";
+    valueMap[13] = "King";
+    valueMap[14] = "Ace";
     
-        suitMap[0] = "Clubs";
-        suitMap[1] = "Diamonds";
-        suitMap[2] = "Hearts";
-        suitMap[3] = "Spades";
+    suitMap[0] = "Clubs";
+    suitMap[1] = "Diamonds";
+    suitMap[2] = "Hearts";
+    suitMap[3] = "Spades";
 };
+
+
+Card::Card(const Card& copiedCard)
+{
+    valueMap[2] = "2";
+    valueMap[3] = "3";
+    valueMap[4] = "4";
+    valueMap[5] = "5";
+    valueMap[6] = "6";
+    valueMap[7] = "7";
+    valueMap[8] = "8";
+    valueMap[9] = "9";
+    valueMap[10] = "10";
+    valueMap[11] = "Jack";
+    valueMap[12] = "Queen";
+    valueMap[13] = "King";
+    valueMap[14] = "Ace";
+    
+    suitMap[0] = "Clubs";
+    suitMap[1] = "Diamonds";
+    suitMap[2] = "Hearts";
+    suitMap[3] = "Spades";
+
+    cardSuit = copiedCard.getSuit();
+    cardValue = copiedCard.getValue();
+}
 
 
 void Card::setSuit(int key)
@@ -35,13 +61,13 @@ void Card::setValue(int key)
 }
 
 
-string Card::getSuit()
+string Card::getSuit() const
 {
     return cardSuit;
 }
 
 
-string Card::getValue()
+string Card::getValue() const
 {
     return cardValue;
 }
@@ -50,4 +76,10 @@ string Card::getValue()
 ostream& operator<< (ostream& out, const Card& outputCard){
     out << outputCard.cardValue << " of " << outputCard.cardSuit;
     return out;
+}
+
+Card& Card::operator= (const Card& baseCard)
+{
+    cardSuit = baseCard.getSuit();
+    cardValue = baseCard.getValue();   
 }

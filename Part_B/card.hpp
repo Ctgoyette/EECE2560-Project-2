@@ -11,6 +11,7 @@ class Card
 {
     public:
         Card();
+        Card(const Card& copiedCard);
 
         /**
          * @brief Set the card value ie. 2-Ace
@@ -31,14 +32,14 @@ class Card
          * 
          * @return string 
          */
-        string getSuit();
+        string getSuit() const;
 
         /**
          * @brief Returns a string object of the card's value
          * 
          * @return string 
          */
-        string getValue();
+        string getValue() const;
 
         /**
          * @brief Overloads cout to the form of "4 of Clubs" or "Value of Suit"
@@ -47,6 +48,8 @@ class Card
          * @return ostream& 
          */
         friend ostream& operator<< (ostream& out, const Card&);
+
+        Card& operator= (const Card& baseCard);
 
     private:
         string cardSuit;
