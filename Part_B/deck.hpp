@@ -54,7 +54,7 @@ class Deck
 
     private:
         // The linked list containing all cards
-        LinkedList<Card> cards;
+        LinkedList<Card> *cards = new LinkedList<Card>;
         // The current number of cards in the deck
         // NOTE MAKE SURE TO UPDATE THIS VALUE WHEN LENGTH OF CARDS IS CHANGED
         int numCards;

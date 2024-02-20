@@ -15,26 +15,18 @@ Deck::Deck()
             Card temp = Card();
             temp.setSuit(j);
             temp.setValue(i);
-            cards.addLast(temp);
+            cards->addLast(temp);
             numCards ++;
         }
     }
-    head = cards.getHead();
+    head = cards->getHead();
 }
 
 
 Deck::~Deck()
 {
-    Node<Card> *delCard = cards.getHead();
-    while (delCard != NULL)
-    {
-        head = head->next;
-        cards.setHead(head);
-        delete delCard;
-        delCard = head;
-        numCards--;
-    }
-    head = nullptr;
+    numCards = 0;
+    delete cards;
 }
 
 void Deck::shuffle()
@@ -46,16 +38,16 @@ void Deck::shuffle()
         // Generates a random number between 1 and the number of cards inclusive
         int randValue = rand()%numCards + 1;
         // Moves the card at that index to end of list
-        cards.addLast(cards.popNode(randValue));
+        cards->addLast(cards->popNode(randValue));
     }
-    head = cards.getHead();
+    head = cards->getHead();
 }
 
 
 ostream& operator<< (ostream& out, const Deck& outputDeck){
     if (outputDeck.numCards > 0)
     {
-        out << outputDeck.cards;
+        out << *outputDeck.cards;
     }
     else
     {
@@ -68,23 +60,23 @@ ostream& operator<< (ostream& out, const Deck& outputDeck){
 void Deck::removeCard()
 {
     // Erases node at curr pointer
-    cards.erase_element();
+    cards->erase_element();
     numCards--;
-    head = cards.getHead();
+    head = cards->getHead();
 }
 
 
 Card Deck::deal()
 {
-    Card card = cards.popNode(1);
-    head = cards.getHead();
+    Card card = cards->popNode(1);
+    head = cards->getHead();
     return card;
 }
 
 
 void Deck::replace(Card& value)
 {
-    cards.addLast(value);
-    head = cards.getHead();
+    cards->addLast(value);
+    head = cards->getHead();
     numCards++;
 }

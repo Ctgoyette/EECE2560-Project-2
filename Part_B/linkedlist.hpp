@@ -13,6 +13,7 @@ class LinkedList
     public:
         
         LinkedList();
+        ~LinkedList();
 
         /**
          * @brief Makes T value into a node and inserts after the curr node
@@ -63,6 +64,19 @@ LinkedList<T>::LinkedList()
     tail = nullptr;
     curr = nullptr;
 };
+
+template <typename T>
+LinkedList<T>::~LinkedList()
+{
+    Node<T> *delCard = head;
+    while (delCard != NULL)
+    {
+        head = head->next;
+        delete delCard;
+        delCard = head;
+    }
+    head = nullptr;
+}
 
 template <typename T>
 void LinkedList<T>::insert_after(T value)
