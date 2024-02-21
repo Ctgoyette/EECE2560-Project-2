@@ -8,6 +8,7 @@ void playFlip()
     Deck *gameDeck = new Deck();
     LinkedList<Card> *playerDeck = new LinkedList<Card>;
     LinkedList<Card> *playerHand = new LinkedList<Card>;
+    int playerScore = 0;
     char userChoice;
     
 
@@ -36,8 +37,11 @@ void playFlip()
         if (userChoice == 'f')
         {
             Card temp = Card(playerDeck->popNode(1));
+            playerScore = getScore(playerScore, temp);
             playerHand->addLast(temp);
+
             cout << "Player Hand:\n" << *playerHand << endl;
+            cout << "Current Score: " << playerSCore << endl;
         }
         else if (userChoice == 'e')
         {
@@ -48,6 +52,34 @@ void playFlip()
             i--;
         }
     }
+}
+
+
+int getScore(int playerScore, const Card& card)
+{
+    string val = card.cardValue;
+    if (val == '6' || val == '5' || val == '4' || val == '3' || val == '2')
+    {
+        playerScore = 0;
+    }
+    else if(val == '7')
+    {
+        playerScore = playerScore/2;
+    }
+    else if(val == 'King' || val == 'Queen' || val == 'Jack')
+    {
+        playerScore += 5;
+    }
+    else if(val == 'Ace')
+    {
+        playerScore += 10;
+    }
+
+    if (card.cardSuit == 'Hearts')
+    {
+        playerScore += 1;
+    }
+    return playerScore;
 }
 
 
