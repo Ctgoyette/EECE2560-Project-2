@@ -55,17 +55,3 @@ void Deck::removeCard()
     cards.erase_element();
     numCards--;
 }
-
-
-Card Deck::deal()
-{
-    Card card = cards.popNode(1);
-    return card;
-}
-
-
-void Deck::replace(Card& value)
-{
-    cards.addLast(value);
-    numCards++;
-}

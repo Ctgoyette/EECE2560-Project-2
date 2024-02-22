@@ -7,7 +7,7 @@ int main()
 {
     Deck deck = Deck();  
 
-    cout << deck << endl;
+    cout << "----Before Shuffle:----\n" << deck << endl;
     deck.shuffle();
-    cout << endl << endl << deck << endl << endl;
+    cout << endl << endl << "----After Shuffle:----\n" << deck << endl << endl;
 }

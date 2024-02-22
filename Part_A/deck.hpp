@@ -29,19 +29,6 @@ class Deck
         void removeCard();
 
         /**
-         * @brief Inserts input parameter card at the last element in cards
-         * 
-         */
-        void replace(Card&);
-
-        /**
-         * @brief Draws the top card of the deck, removing it from the list
-         * 
-         * @return Card 
-         */
-        Card deal();
-
-        /**
          * @brief Outputs one card at a time each on a new line
          * 
          * @param out 
