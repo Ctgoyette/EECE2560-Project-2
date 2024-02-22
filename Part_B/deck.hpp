@@ -43,12 +43,13 @@ class Deck
         Card deal();
 
         /**
-         * @brief Outputs one card at a time each on a new line
+         * @brief Overloads the output stream to output one card at a time, each on a new line
          * 
          * @param out 
+         * @param outputDeck
          * @return ostream& 
          */
-        friend ostream& operator<< (ostream& out, const Deck&);
+        friend ostream& operator<< (ostream& out, const Deck& outputDeck);
 
         
 

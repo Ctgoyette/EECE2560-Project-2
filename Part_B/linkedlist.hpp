@@ -43,10 +43,28 @@ class LinkedList
          */
         void addLast(T value);
 
+        /**
+         * @brief Overloads the output stream to output one node at a time, each on a new line
+         * 
+         * @param out
+         * @param list
+         * @return ostream&
+         */
         template <typename Y>
-        friend ostream& operator<< (ostream& out, const LinkedList<Y>&);
+        friend ostream& operator<< (ostream& out, const LinkedList<Y>& list);
 
+        /**
+         * @brief Returns the node located at the head of the list
+         * 
+         * @return Node<T> 
+         */
         Node<T> *getHead() {return head;}
+
+        /**
+         * @brief Sets the head of the linked list to the given node
+         * 
+         * @param *newHead: Node to set as the head of the linked list
+         */
         void setHead(Node<T> *newHead) {head = newHead;}
     
     private:
