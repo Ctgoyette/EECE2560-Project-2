@@ -3,12 +3,39 @@
 
 using namespace std;
 
+int updateScore(float& playerScore, const Card& card)
+{
+    string val = card.getValue();
+    if (val == "6" || val == "5" || val == "4" || val == "3" || val == "2")
+    {
+        playerScore = 0;
+    }
+    else if(val == "7")
+    {
+        playerScore = playerScore/2;
+    }
+    else if(val == "King" || val == "Queen" || val == "Jack")
+    {
+        playerScore += 5;
+    }
+    else if(val == "Ace")
+    {
+        playerScore += 10;
+    }
+
+    if (card.getSuit() == "Hearts")
+    {
+        playerScore += 1;
+    }
+    return playerScore;
+}
+
 void playFlip()
 {
     Deck *gameDeck = new Deck();
     LinkedList<Card> *playerDeck = new LinkedList<Card>;
     LinkedList<Card> *playerHand = new LinkedList<Card>;
-    int playerScore = 0;
+    float playerScore = 0.0;
     char userChoice;
     
 
@@ -17,7 +44,7 @@ void playFlip()
         gameDeck->shuffle();
     }
 
-    cout << "Game Deck:\n" << *gameDeck << endl;
+    cout << "----Game Deck:----\n" << *gameDeck << endl;
 
     for (int i = 0; i < 24; i++)
     {
@@ -25,8 +52,8 @@ void playFlip()
         playerDeck->addLast(temp);
     }
 
-    cout << "Top 24 Cards:\n" << *playerDeck << endl;
-    cout << "Remaining Deck:\n" << *gameDeck << endl;
+    cout << "----Top 24 Cards:----\n" << *playerDeck << endl;
+    cout << "----Remaining Deck:----\n" << *gameDeck << endl;
 
     cout << "Welcome to Flip!" << endl;
 
@@ -37,11 +64,11 @@ void playFlip()
         if (userChoice == 'f')
         {
             Card temp = Card(playerDeck->popNode(1));
-            playerScore = getScore(playerScore, temp);
+            playerScore = updateScore(playerScore, temp);
             playerHand->addLast(temp);
 
-            cout << "Player Hand:\n" << *playerHand << endl;
-            cout << "Current Score: " << playerSCore << endl;
+            cout << "\n----Player Hand:----\n" << *playerHand << endl;
+            cout << "Current Score: " << playerScore << endl;
         }
         else if (userChoice == 'e')
         {
@@ -52,38 +79,13 @@ void playFlip()
             i--;
         }
     }
+
+    cout << "Thanks for playing!" << endl;
+    cout << "Your final score was: " << playerScore << endl;
 }
-
-
-int getScore(int playerScore, const Card& card)
-{
-    string val = card.cardValue;
-    if (val == '6' || val == '5' || val == '4' || val == '3' || val == '2')
-    {
-        playerScore = 0;
-    }
-    else if(val == '7')
-    {
-        playerScore = playerScore/2;
-    }
-    else if(val == 'King' || val == 'Queen' || val == 'Jack')
-    {
-        playerScore += 5;
-    }
-    else if(val == 'Ace')
-    {
-        playerScore += 10;
-    }
-
-    if (card.cardSuit == 'Hearts')
-    {
-        playerScore += 1;
-    }
-    return playerScore;
-}
-
 
 int main()
 {
     playFlip();
+    return 0;
 }

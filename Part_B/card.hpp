@@ -42,13 +42,20 @@ class Card
         string getValue() const;
 
         /**
-         * @brief Overloads cout to the form of "4 of Clubs" or "Value of Suit"
+         * @brief Overloads output stream to the form of "4 of Clubs" or "Value of Suit"
          * 
          * @param out 
+         * @param outputCard 
          * @return ostream& 
          */
-        friend ostream& operator<< (ostream& out, const Card&);
+        friend ostream& operator<< (ostream& out, const Card& outputCard);
 
+        /**
+         * @brief Overloads assignment operator and sets suit and value of card to the suit and value of the card given as an argument
+         * 
+         * @param baseCard 
+         * @return Card& 
+         */
         Card& operator= (const Card& baseCard);
 
     private:
