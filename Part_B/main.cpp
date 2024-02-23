@@ -1,5 +1,6 @@
 #include <iostream>
 #include "deck.hpp"
+#include <limits>
 
 using namespace std;
 
@@ -60,7 +61,8 @@ void playFlip()
     for (int i = 0; i < 24; i++)
     {
         cout << "\nCard #" << i+1 << "\nWould you like to flip this card or end the game?\nEnter 'f' to flip or 'e' to end the game" << endl;
-        cin >> userChoice;
+        userChoice = cin.get();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (userChoice == 'f')
         {
             Card temp = Card(playerDeck->popNode(1));
