@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Basic node for a linked list
 template <typename T>
 class Node
 {

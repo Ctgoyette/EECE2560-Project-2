@@ -45,8 +45,8 @@ class Deck
         /**
          * @brief Overloads the output stream to output one card at a time, each on a new line
          * 
-         * @param out 
-         * @param outputDeck
+         * @param out: output stream
+         * @param outputDeck: deck object to output
          * @return ostream& 
          */
         friend ostream& operator<< (ostream& out, const Deck& outputDeck);

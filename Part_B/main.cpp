@@ -6,6 +6,7 @@ using namespace std;
 
 int updateScore(float& playerScore, const Card& card)
 {
+    //Gets the value of the flipped card and checks to see how to change the player's score based on the value
     string val = card.getValue();
     if (val == "6" || val == "5" || val == "4" || val == "3" || val == "2")
     {
@@ -33,13 +34,14 @@ int updateScore(float& playerScore, const Card& card)
 
 void playFlip()
 {
+    //Generates the card decks and hands needed to play the game
     Deck *gameDeck = new Deck();
     LinkedList<Card> *playerDeck = new LinkedList<Card>;
     LinkedList<Card> *playerHand = new LinkedList<Card>;
     float playerScore = 0.0;
     char userChoice;
     
-
+    //Shuffles the card deck 3 times
     for (int i = 0; i < 3; i++)
     {
         gameDeck->shuffle();
@@ -47,6 +49,7 @@ void playFlip()
 
     cout << "----Game Deck:----\n" << *gameDeck << endl;
 
+    //Draws 24 cards from the top of the deck
     for (int i = 0; i < 24; i++)
     {
         Card temp = Card(gameDeck->deal());
@@ -65,6 +68,7 @@ void playFlip()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (userChoice == 'f')
         {
+            //If the use chooses to flip the next card, get the next card from the 24 cards previously drawn and update the player's score based on the value of the flipped card
             Card temp = Card(playerDeck->popNode(1));
             playerScore = updateScore(playerScore, temp);
             playerHand->addLast(temp);
@@ -77,6 +81,7 @@ void playFlip()
             break;
         }
         else{
+            //If the user doesn't enter a valid input, keep asking the user for input until the user enters a valid input
             cout << "Please enter a valid input ('f' or 'e')" << endl;
             i--;
         }

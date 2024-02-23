@@ -68,6 +68,7 @@ void Deck::removeCard()
 
 Card Deck::deal()
 {
+    //Gets the card at the top of the deck (beginning of the linked list)
     Card card = cards->popNode(1);
     head = cards->getHead();
     return card;
@@ -76,6 +77,7 @@ Card Deck::deal()
 
 void Deck::replace(Card& value)
 {
+    //Adds a card back to the bottom of the deck (end of the linked list)
     cards->addLast(value);
     head = cards->getHead();
     numCards++;

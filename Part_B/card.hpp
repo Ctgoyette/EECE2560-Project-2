@@ -44,8 +44,8 @@ class Card
         /**
          * @brief Overloads output stream to the form of "4 of Clubs" or "Value of Suit"
          * 
-         * @param out 
-         * @param outputCard 
+         * @param out: output stream
+         * @param outputCard: card object to output
          * @return ostream& 
          */
         friend ostream& operator<< (ostream& out, const Card& outputCard);
