@@ -87,7 +87,7 @@ void playFlip()
         }
     }
 
-    cout << "Thanks for playing!" << endl;
+    cout << "\nThanks for playing!" << endl;
     cout << "Your final score was: " << playerScore << endl;
 }
 
