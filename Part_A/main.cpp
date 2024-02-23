@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//Creates a new deck, prints the deck, shuffles the deck, and then prints the shuffled deck
 int main()
 {
     Deck deck = Deck();  

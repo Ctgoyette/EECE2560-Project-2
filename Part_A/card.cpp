@@ -2,6 +2,7 @@
 
 Card::Card()
 {
+        //value map to make generating a deck of cards simpler
         valueMap[2] = "2";
         valueMap[3] = "3";
         valueMap[4] = "4";

@@ -15,13 +15,6 @@ class LinkedList
         LinkedList();
 
         /**
-         * @brief Makes T value into a node and inserts after the curr node
-         * 
-         * @param value 
-         */
-        void insert_after(T value);
-
-        /**
          * @brief Deletes the current node from the list
          * 
          */
@@ -30,7 +23,7 @@ class LinkedList
         /**
          * @brief returns the data from the node at index
          * 
-         * @param index 
+         * @param index: index of node to get 
          * @return T 
          */
         T popNode(int index);
@@ -38,10 +31,17 @@ class LinkedList
         /**
          * @brief Makes T value into a node and inserts at the end of the list
          * 
-         * @param value 
+         * @param value: add a node to the end of the list with the data passed to the function 
          */
         void addLast(T value);
 
+        /**
+         * @brief Overloads the output stream to output one node at a time, each on a new line
+         * 
+         * @param out: output stream
+         * @param list: list to output
+         * @return ostream&
+         */
         template <typename Y>
         friend ostream& operator<< (ostream& out, const LinkedList<Y>&);
     
@@ -62,42 +62,11 @@ LinkedList<T>::LinkedList()
 };
 
 template <typename T>
-void LinkedList<T>::insert_after(T value)
-{
-    if (head == nullptr)
-    {
-        head = new Node<T>();
-        head->data = value;
-        tail = head;
-        curr = head;
-    }
-    else
-    {
-        Node<T> *tmp = new Node<T>();
-        tmp->data = value;
-        tmp->prev = curr;
-        tmp->next = curr->next;
-        if (curr->next != nullptr)
-        {
-            curr->next->prev = tmp;
-        }
-        curr->next = tmp;
-        curr = tmp;
-        if(curr->next == nullptr)
-        {
-            tail = curr;
-        }
-
-    }
-};
-
-
-template <typename T>
 void LinkedList<T>::erase_element()
 {   
+    //Check if the element to be erased is the head or tail of the linked list and assign the previous node and next node pointers accordingly
     if(curr == head)
     {
-        // cout << "curr == head" << endl;
         if (curr->next != nullptr)
         {
             head = curr->next;
@@ -112,7 +81,6 @@ void LinkedList<T>::erase_element()
     }
     else if(curr == tail)
     {
-        // cout << "curr == tail" << endl;
         tail = curr->prev;
         tail->next = nullptr;
         delete curr;
@@ -144,13 +112,15 @@ template <typename T>
 T LinkedList<T>::popNode(int index)
 {
     curr = head;
+
+    //Iterate through the linked list until the index of the node to return is found
     for(int i = 1; i < index; i++)
     {
-        // cout << i << ":   " << *curr << endl;
         curr = curr->next;
     }
     T tmp = (*curr).data;
 
+    //Erase the node after temporarily storing it to be returned
     erase_element();
     return tmp;
 }
@@ -159,6 +129,7 @@ T LinkedList<T>::popNode(int index)
 template <typename T>
 void LinkedList<T>::addLast(T value)
 {   
+    //Checks if there are any nodes in the linekd list and adds a new node accordingly
     if (head == nullptr)
     {
         head = new Node<T>();
